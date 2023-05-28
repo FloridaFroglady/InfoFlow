@@ -1,0 +1,35 @@
+body{
+    background-color: rgb(185, 171, 152);
+    font-size: larger;
+    color: antiquewhite;
+}
+
+hr{
+   height: 5px;
+   width: 60%;
+   border-width:0;
+   background-color: rgb(59, 6, 6); 
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.title {
+    color: rgb(59, 6, 6);
+}
+
+.codebox{
+    border: solid black 2px;
+    background-color: antiquewhite;
+    color: black;
+    width: 80%;
+    margin: auto;
+    padding: 2%;
+
+}
+
+#text2 {
+    color: firebrick;
+    margin-left: 30%;
+}

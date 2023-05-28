@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Move Information Around</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header><h1>Case Studies for Moving Information</h1></header>
+    <hr >
+    <main>
+      <section>
+        <h2 class="title">Case 1: Using Return Statements</h2>
+        <div class="codebox">
+        <pre class="language-javascript">
+        <code>
+          const function1 = () => { return "Hello World"; }
+          console.log(function1());
+        </code>
+    </pre>
+</div>
+      </section>
+
+      <section>
+        <h2 class="title">Case 2: Using Functions and DOM Manipulation to Change Values</h2>
+        <div class="codebox">
+        <button onclick="function2()">Say Hello</button>
+        <h3 id="text2"></h3>
+        <pre class="language-javascript">
+            <code>
+          const function2 = () => { const greeting = "Hello World";
+          document.getElementById("text2").textContent = greeting; }
+            </code>
+        </pre>
+    </div>
+      </section>
+
+      <section>
+        <h2 class="title">Case 3: Waiting for Information--Promises with Async/Await</h2>
+        <div class="codebox">
+        <button onclick="weatherAppAsync()">Get Weather Asynchronously</button>
+        <h3 id="text3"></h3>
+        <pre class="language-javascript">
+        <code>const weatherAppAsync = async() => {
+            const geoUrl = "https://api.openweathermap.org/geo/1.0/direct?q=Clearwater&appid=eeee70c5daa7a8997eff5ca2f3d7d931";
+            async function getGeo(){
+            const response = await fetch(geoUrl)
+            const data = await response.json()
+            const lat = data[0].lat
+            const lon = data[0].lon
+            getWeather(lat, lon)
+            }
+            async function getWeather(lat, lon) {
+                const weatherUrl =`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=eeee70c5daa7a8997eff5ca2f3d7d931` 
+                const response = await fetch(weatherUrl)
+                const data = await response.json()
+                console.log(data);
+            }
+            getGeo();
+        }
+        
+        </code>
+    </div>
+        </pre>
+    </div>
+      </section>
+
+      <section>
+        <h2 class="title">Case 4: Waiting for Information--Promises With .Then</h2>
+        <div class="codebox">
+        <button onclick="weatherAppThen()">Get Weather With Promise Chain</button>
+        <h3 id="text3"></h3>
+        <pre class="language-javascript">
+        <code>const weatherAppThen = () => {
+            const geoUrl = "https://api.openweathermap.org/geo/1.0/direct?q=Clearwater&appid=eeee70c5daa7a8997eff5ca2f3d7d931";
+            async function getGeo(){
+            fetch(geoUrl)
+            .then(response => response.json(response))
+            .then(data => {console.log(data)
+            const lat = data[0].lat
+            const lon = data[0].lon
+            getWeather(lat, lon)
+            })
+            }
+            function getWeather(lat, lon) {
+                const weatherUrl =`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=eeee70c5daa7a8997eff5ca2f3d7d931` 
+                fetch(weatherUrl)
+                .then(response => response.json(response))
+                .then(data => console.log(data))
+            }
+            getGeo();
+        }</code>
+        </pre>
+    </div>
+      </section>
+
+        <section>
+            
+            <h2 class="title">Case 5: Login Form with Submit Button</h2>
+            <div class="codebox">
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" placeholder="Username">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" placeholder="Password">
+                <button type="submit">Submit</button>
+            </form>
+
+            <pre class="language-javascript">
+                <code>
+                    document.getElementById("loginForm").addEventListener("submit", function(event) {
+                        event.preventDefault()
+                        const myUsername = event.target[0].value;
+                        const myPassword = event.target[1].value;
+                        const results = {
+                            username: myUsername,
+                            password: myPassword
+                        }
+                        console.log(results);
+                        console.log(this);
+                    })
+                </code>
+            </pre>
+        </div> 
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
