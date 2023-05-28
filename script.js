@@ -12,7 +12,7 @@ const function2 = () => {
 }
 
 const weatherAppAsync = async() => {
-    const geoUrl = "https://api.openweathermap.org/geo/1.0/direct?q=Clearwater&appid=eeee70c5daa7a8997eff5ca2f3d7d931";
+    const geoUrl = "https://api.openweathermap.org/geo/1.0/direct?q=Clearwater&appid=*insert api key here*";
     async function getGeo(){
     const response = await fetch(geoUrl)
     const data = await response.json()
@@ -21,7 +21,7 @@ const weatherAppAsync = async() => {
     getWeather(lat, lon)
     }
     async function getWeather(lat, lon) {
-        const weatherUrl =`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=eeee70c5daa7a8997eff5ca2f3d7d931` 
+        const weatherUrl =`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=*insert api key here*` 
         const response = await fetch(weatherUrl)
         const data = await response.json()
         console.log(data);
@@ -31,7 +31,7 @@ const weatherAppAsync = async() => {
 
 
 const weatherAppThen = () => {
-    const geoUrl = "https://api.openweathermap.org/geo/1.0/direct?q=Clearwater&appid=eeee70c5daa7a8997eff5ca2f3d7d931";
+    const geoUrl = "https://api.openweathermap.org/geo/1.0/direct?q=Clearwater&appid=*insert api key here";
     async function getGeo(){
     fetch(geoUrl)
     .then(response => response.json(response))
@@ -42,7 +42,7 @@ const weatherAppThen = () => {
     })
     }
     function getWeather(lat, lon) {
-        const weatherUrl =`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=eeee70c5daa7a8997eff5ca2f3d7d931` 
+        const weatherUrl =`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=*insert api key here` 
         fetch(weatherUrl)
         .then(response => response.json(response))
         .then(data => console.log(data))
